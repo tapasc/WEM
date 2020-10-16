@@ -1,0 +1,2208 @@
+@import './reset.css';
+
+/**/
+@font-face {
+    font-family: 'MyriadPro-BlackCond';
+    src        : url('./fonts/MyriadPro-BlackCond.eot');
+    src        : url('./fonts/MyriadPro-BlackCond.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/MyriadPro-BlackCond.svg#MyriadPro-BlackCond') format('svg'),
+        url('./fonts/MyriadPro-BlackCond.ttf') format('truetype'),
+        url('./fonts/MyriadPro-BlackCond.woff') format('woff'),
+        url('./fonts/MyriadPro-BlackCond.woff2') format('woff2');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'HouseMovements-Custom';
+    src        : url('./fonts/HouseMovements-Custom.eot');
+    src        : url('./fonts/HouseMovements-Custom.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/HouseMovements-Custom.svg#HouseMovements-Custom') format('svg'),
+        url('./fonts/HouseMovements-Custom.ttf') format('truetype'),
+        url('./fonts/HouseMovements-Custom.woff') format('woff'),
+        url('./fonts/HouseMovements-Custom.woff2') format('woff2');
+    font-weight: normal;
+    font-style : normal;
+}
+
+/* body * {
+    border: .4px dotted rgba(24, 24, 24, 0.75);
+} */
+
+html,
+body {
+    width      : 100%;
+    height     : 100%;
+    box-sizing : border-box;
+    display    : flex;
+    display    : -ms-flexbox;
+    align-items: center;
+}
+
+body {
+    /* background-color   : orangered; */
+    /* background-color             : #a1a297 */
+    /* background-repeat     : repeat-x; */
+    /* background-repeat     : no-repeat; */
+    /* background-size       : cover; */
+    /* background-position   : center; */
+    background: #d5c2a1;
+}
+
+/*----Stage----*/
+#GameWindow {
+    width                        : 134vh;
+    /* height                    : calc(100% - 15px); */
+    height                       : 98vh;
+    /* max-width                 : 1920px;
+    max-height                   : 1080px; */
+    margin                       : 0 auto;
+    /* margin                    : -6 auto; */
+    position                     : relative;
+    border-radius                : 4px;
+    /* top                       : 50%;
+    transform                    : translateY(-50%); */
+    /* -ms-transform             : translateY(-50%) translateY(5rem);
+    -webkit-transform            : translateY(-50%) translateY(5rem);
+    -moz-transform               : translateY(-50%) translateY(5rem);
+    transform                    : translateY(-50%) translateY(5rem); */
+    overflow                     : hidden;
+}
+
+#GameWindow>#loader {
+    position       : absolute;
+    width          : 100%;
+    height         : 100%;
+    background     : orange;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    z-index        : 10;
+    visibility     : visible;
+    opacity        : 1;
+    background     : url(../images/loader.png);
+    background-size: cover;
+    /* position    : absolute;
+    top            : 92%; */
+    font-size      : 7vh;
+}
+
+#GameWindow>#loader>.progressbar {
+    width     : auto;
+    height    : 7vh;
+    position  : absolute;
+    top       : 90%;
+    font-size : 8vh;
+    text-align: center;
+    align-self: center;
+}
+
+#GameWindow>#loader>.progressbar::after {
+    content: 'LOADING';
+}
+
+#GameWindow>#stage {
+    width                : 100%;
+    height               : 100%;
+    /* background        : darkcyan; */
+    position             : absolute;
+    z-index              : 9;
+    /* background        : url(../images/FM_intro_MC.png) center center no-repeat #d5c2a1;
+    background-size      : contain; */
+    display              : flex;
+    flex-direction       : column;
+    overflow             : hidden;
+}
+
+#GameWindow #stage #topbar {
+    width     : 100%;
+    height    : 7vh;
+    background: transparent;
+    /* border : 1px solid yellow; */
+    position  : absolute;
+    z-index   : 20;
+}
+
+#GameWindow #stage #gameContainer {
+    width    : calc(100%);
+    height   : calc(100%);
+    /* border: 1px solid yellow; */
+}
+
+#GameWindow.stageShadow div#stage div#gameContainer div#questionContainerOverlay {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    z-index : 2;
+    width   : 100%;
+    height  : 100%;
+
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+* {
+    user-select        : none;
+    -moz-user-select   : none;
+    -webkit-user-select: none;
+}
+
+.italics {
+    font-style: italic;
+}
+
+.fontHeavy {
+    font-weight: 'bold';
+    font-size  : '3vh';
+}
+
+/*---------------------------------------------------------------------*/
+.stageShadow {
+    border               : 3px solid #6F6A61;
+    /* -webkit-box-shadow: 0px 1px 0px 6px #6F6A61;
+    -moz-box-shadow      : 0px 1px 0px 6px #6F6A61;
+    box-shadow           : 0px 1px 0px 6px #6F6A61; */
+}
+
+/*---------------------------------------------------------------------*/
+
+
+/*Flash Templates CSS*/
+.templateFont {
+    font-family: 'HouseMovements-Custom';
+    text-align : center;
+}
+
+.templateDisplayNone {
+    display: none;
+}
+
+.templateDisplayBlock {
+    display: block;
+}
+
+#auxillary {
+    position: absolute;
+    top     : -100%;
+    left    : 0px;
+    width   : 100%;
+    height  : 100%;
+    z-index : 1000;
+
+}
+
+#auxillary #auxillaryContent {
+    position: absolute;
+    top     : 22%;
+    left    : 23%;
+    height  : 51vh;
+    width   : 78vh;
+}
+
+#auxillary #auxillaryContent .title {
+    width     : 78vh;
+    text-align: center;
+    font-size : 6vh;
+    color     : #fff;
+}
+
+#auxillary #auxillaryContent .list {
+    list-style-position: inside;
+    list-style-type    : decimal;
+    font-size          : 2.5vh;
+    font-family        : serif;
+    height             : 74%;
+    display            : inline-block;
+    overflow           : auto;
+    position           : absolute;
+    top                : 12%;
+    color              : #fff;
+    width              : 70vh;
+    padding            : 2vh;
+}
+
+.btn {
+    width            : 23vh;
+    height           : 8vh;
+    background       : url(../images/button_medium_grey.png);
+    background-repeat: repeat;
+    background-size  : auto;
+    background-size  : contain;
+    background-repeat: no-repeat;
+    cursor           : pointer;
+    font-family      : 'HouseMovements-Custom';
+    font-size        : 4vh;
+    text-align       : center;
+    line-height      : 8vh;
+}
+
+.btnSmall {
+    height     : 6.4vh;
+    font-size  : 4vh;
+    line-height: 6.5vh;
+    width      : 18vh;
+    z-index    : 10;
+}
+
+.btn:hover {
+    background         : url(../images/button_medium_yellow.png);
+    background-repeat  : repeat;
+    background-size    : auto;
+    background-size    : contain;
+    background-repeat  : no-repeat;
+    background-position: 1px 0;
+}
+
+.roundBtn {
+    width      : 120px;
+    line-height: 40px;
+}
+
+#BeginBtn {
+    position    : absolute;
+    top         : 85%;
+    left        : 43%;
+    /* width    : 18vh; */
+    /* font-size: 3.7vh; */
+    z-index     : 40;
+}
+
+.Overlay {
+    width     : 100%;
+    height    : 100%;
+    background: rgba(0, 0, 0, 0.75);
+    position  : absolute;
+    top       : 0;
+    z-index   : 3;
+}
+
+/* Template Backgrounds*/
+.teamSelectTitleNoColor {
+    width               : 66%;
+    height              : 25%;
+    background          : url(../images/title_background.png) 0px 0px;
+    background-size     : cover;
+    /* background-color : #d9ad00;
+    -webkit-transform   : perspective(80vh) rotateY(-13deg);
+    transform           : perspective(80vh) rotateY(-13deg); */
+    position            : relative;
+    top                 : 10%;
+    left                : -81%;
+}
+
+.roundSelectTitleNoColor {
+    width               : 67%;
+    height              : 25%;
+    background          : url(../images/title_background_right.png) 0 0;
+    background-size     : cover;
+    /* background-color : #d9ad00;
+    -webkit-transform   : perspective(80vh) rotateY(-11deg);
+    transform           : perspective(80vh) rotateY(-11deg); */
+    position            : absolute;
+    top                 : 70%;
+    right               : -85vh;
+}
+
+.teamSelectTitle {
+    font-size           : 13vh;
+    text-align          : left;
+    padding-left        : 30px;
+    line-height         : 25vh;
+    width               : 60%;
+    height              : 25%;
+    /* background-color : #d9ad00; */
+    /* -webkit-transform: perspective(80vh) rotateY(-13deg);
+    transform           : perspective(80vh) rotateY(-13deg); */
+    position            : absolute;
+    top                 : 10%;
+    left                : 0%;
+}
+
+.roundSelectTitle {
+    /* transform   : perspective(80vh) rotateY(-11deg); */
+    position    : absolute;
+    top         : 70%;
+    right       : 5vh;
+    width       : 60%;
+    height      : 25%;
+    font-size   : 13vh;
+    text-align  : left;
+    padding-left: 30px;
+    line-height : 25vh;
+}
+
+.verifySelection {
+    font-size     : 13vh;
+    color         : #d9ad01;
+    position      : absolute;
+    top           : 46%;
+    /* text-align : left; */
+    height        : 13vh;
+    /* line-height: 103px; */
+    width         : 70vh;
+    left          : 28%;
+    text-shadow   : -2px 2px 1px rgba(24, 24, 24, 0.75);
+    letter-spacing: 1px;
+}
+
+
+.teamRandomizerTemplate {
+    width          : 100%;
+    height         : 100%;
+    background-size: contain;
+
+}
+
+.splashTemplate {
+    width          : 100%;
+    height         : 100%;
+    background-size: contain;
+    background     : #d5c2a1;
+}
+
+.splashTemplate .bottomBG {
+    width            : 100%;
+    height           : 100%;
+    background-repeat: no-repeat;
+    position         : relative;
+}
+
+.splashTemplate .topBG {
+    width            : 100%;
+    height           : 100%;
+    background-repeat: no-repeat;
+    position         : absolute;
+    z-index          : 10;
+    top              : 0px;
+}
+
+.auxillaryTemplate {
+    width : 100%;
+    height: 100%;
+}
+
+.auxillaryTemplate #HelpClose {
+    position: absolute;
+    top     : 71%;
+    left    : 41%;
+}
+
+.topicSelectionTemplate {
+    width          : 100%;
+    height         : 100%;
+    background     : #d5c2a1;
+    background-size: contain;
+}
+
+/*Question Template*/
+.questionTemplate {
+    width     : 100%;
+    height    : 100%;
+    background: #006699;
+}
+
+.questionTemplate .btnBar {
+    width          : 100%;
+    height         : 50px;
+    display        : flex;
+    display        : -ms-flexbox;
+    position       : absolute;
+    justify-content: space-around;
+    bottom         : 28%;
+    visibility     : hidden;
+}
+
+.questionTemplate .questionContainer {
+    background         : url(../images/QuestionBg.png) no-repeat;
+    position           : absolute;
+    visibility         : hidden;
+    width              : 100%;
+    height             : 110%;
+    top                : -9%;
+    /* left            : -3.5%; */
+    background-size    : 114% 115%;
+    background-position: -8.3vh -11px;
+}
+
+.questionTemplate .scoreboard .feedback #tName {
+    position      : absolute;
+    top           : -14%;
+    left          : 18%;
+    font-size     : 17vh;
+    letter-spacing: 1vh;
+}
+
+.questionTemplate .scoreboard .feedback #tScore {
+    position      : absolute;
+    top           : 5%;
+    left          : 18%;
+    font-size     : 19vh;
+    letter-spacing: 1vh;
+}
+
+.questionTemplate .scoreboard {
+    width                    : 101%;
+    height                   : 101%;
+    overflow                 : hidden;
+    background               : url(../images/FM_seal_icon_copy.png) 65vh 12vh no-repeat;
+    position                 : absolute;
+    /* background-position   : 645px 134px; */
+    top                      : -1px;
+    left                     : -1px;
+    /* z-index               : 2; */
+    background-size          : 45% 65%;
+    visibility               : hidden;
+    background-color         : #d5c2a1;
+}
+
+.questionTemplate .scoreboard div {
+    width          : 100%;
+    margin         : 0 auto;
+    font-size      : 20px;
+    font-weight    : bold;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    height         : 100%;
+}
+
+/* .questionTemplate .scoreboard .feedback {
+    width          : 100%;
+    margin         : 0 auto;
+    font-size      : 20px;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    height         : 100%;
+    position       : absolute;
+    top            : 30px;
+} */
+
+.questionTemplate .questionContainer .banner {
+    background     : url(../images/FM_scroll_icon.png) no-repeat;
+    width          : 77%;
+    height         : 15%;
+    position       : absolute;
+    background-size: 100% 102%;
+    left           : 11%;
+    font-size      : 8vh;
+    line-height    : 11vh;
+    top            : 11%;
+}
+
+.questionTemplate .questionContainer .questionDisplay {
+    width      : 70%;
+    height     : 36vh;
+    overflow   : auto;
+    margin     : 0 auto;
+    position   : absolute;
+    top        : 31%;
+    font-size  : 3vh;
+    color      : #fff;
+    font-family: Microsoft Sans Serif;
+    left       : 15%;
+}
+
+.questionTemplate .questionContainer .questionDisplay .question {
+    text-align: center;
+}
+
+.questionTemplate .questionContainer .questionDisplay .questionDescription {
+    text-align: center;
+    position  : relative;
+    top       : 90px;
+}
+
+.questionTemplate .questionContainer .questionDisplay .questionDescription ul {
+    display        : inline-block;
+    list-style-type: disc;
+}
+
+.questionTemplate .questionContainer .questionDisplay .questionDescription ul>li ul {
+    display        : inline-block;
+    list-style-type: square type b;
+}
+
+div#gameContainer div#questionContainerOverlay div.questionTemplate div.questionContainer div#ShowBtn.btn.templateFont {
+    position: absolute;
+    top     : 70%;
+    left    : 42%;
+
+}
+
+.questionTemplate .teamButtons .badge {
+
+    width : 18vh;
+    height: 28vh;
+
+}
+
+
+.questionTemplate .badgeRunner {
+    width   : 18vh;
+    height  : 28vh;
+    position: absolute;
+    top     : 82%;
+    z-index : 1;
+
+}
+
+
+.questionTemplate .teamButtons .badge .team-name {
+    position      : relative;
+    top           : 10.4%;
+    left          : 19%;
+    font-size     : 3.7vh;
+    color         : #878981;
+    letter-spacing: 1px;
+    z-index       : 3;
+}
+
+
+.questionTemplate .teamButtons .badge .team-score {
+    position      : relative;
+    z-index       : 2;
+    top           : 41%;
+    left          : -24%;
+    font-size     : 3.7vh;
+    color         : #878981;
+    letter-spacing: 1px;
+}
+
+.questionTemplate .teamButtons {
+    width             : 80%;
+    height            : 23vh;
+    display           : flex;
+    display           : -ms-flexbox;
+    justify-content   : space-around;
+    align-self        : center;
+    position          : absolute;
+    top               : 35%;
+    left              : 10%;
+    /* z-index        : 3; */
+}
+
+.questionTemplate #timer {
+    background     : url(../images/timer_bg.png);
+    width          : 13vh;
+    height         : 5.9vh;
+    position       : absolute;
+    top            : 20%;
+    left           : 49%;
+    font-size      : 4.5vh;
+    background-size: contain;
+    line-height    : 5.6vh;
+    color          : #fff;
+}
+
+.pause {
+    display        : inline-block;
+    background     : url(../images/pause.png);
+    width          : 4vh;
+    height         : 4vh;
+    background-size: contain;
+    position       : relative;
+    top            : 7px;
+    left           : 2px;
+    cursor         : pointer;
+}
+
+.play {
+    display          : inline-block;
+    background       : url(../images/play-button.png);
+    width            : 4vh;
+    height           : 4vh;
+    background-size  : contain;
+    position         : relative;
+    top              : 16%;
+    left             : 5%;
+    cursor           : pointer;
+    background-repeat: no-repeat;
+
+}
+
+.questionTemplate #timer_btn {
+    background       : url(../images/help_exit_bg.png);
+    width            : 7vh;
+    height           : 6.5vh;
+    position         : absolute;
+    top              : 20%;
+    left             : 43%;
+    font-size        : 4.5vh;
+    background-size  : cover;
+    line-height      : 5.6vh;
+    color            : #fff;
+    background-repeat: no-repeat;
+}
+
+.questionTemplate #timer_btn.disabled {
+    pointer-events: none;
+    opacity       : 0.9;
+    touch-action  : none;
+}
+
+/*Intro video template */
+
+.introVideoTemplate {
+    width          : 100%;
+    height         : 100%;
+    background     : #d5c2a1;
+    background-size: contain;
+}
+
+.introVideoTemplate .loading_text {
+    position       : absolute;
+    width          : 145vh;
+    height         : 100%;
+    display        : flex;
+    justify-content: space-around;
+    align-items    : center;
+    z-index        : 1;
+    font-size      : 10vh;
+}
+
+
+/***********************/
+
+/*Intro video template */
+
+.stealVideoTemplate {
+    width          : 100%;
+    height         : 100%;
+    background     : #d5c2a1;
+    background-size: contain;
+}
+
+.stealVideoTemplate .loading_text {
+    position : absolute;
+    width    : 65px;
+    height   : 20px;
+    top      : 50%;
+    transform: translate(-50%, -50%);
+    left     : 50%;
+    z-index  : 1;
+    font-size: 10vh;
+}
+
+
+.selectTeamCountTemplate,
+.roundSelectTemplate {
+    width : 100%;
+    height: 100%;
+
+}
+
+.verifySelectionTemplate {
+    width : 100%;
+    height: 100%;
+
+}
+
+.splashTemplate #button_hover_splash_bottom {
+    width            : 21%;
+    height           : 470px;
+    background       : url(../images/numberone_icon.png);
+    position         : absolute;
+    top              : 100%;
+    background-size  : contain;
+    left             : 40.5%;
+    background-repeat: no-repeat;
+    z-index          : 100;
+}
+
+.animateHoverUpSplash {
+    animation          : hoverUpSplash;
+    animation-duration : 0.1s;
+    animation-fill-mode: both;
+}
+
+.animateHoverDownSplash {
+    animation          : hoverDownSplash;
+    animation-duration : 0.1s;
+    animation-fill-mode: both;
+}
+
+@keyframes hoverUpSplash {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: 93%;
+    }
+}
+
+@keyframes hoverDownSplash {
+    0% {
+        top: 93%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+.splashTemplate .revolvingLogo {
+    width          : 60vh;
+    height         : 60vh;
+    background     : url(../images/FM_seal_icon_copy.png);
+    background-size: contain;
+    position       : absolute;
+    top            : 18%;
+    left           : 29.5%;
+}
+
+.splashTemplate .revolvingLeft {
+    width          : 40vh;
+    height         : 40vh;
+    background     : url(../images/FM_seal_icon_copy.png);
+    position       : absolute;
+    top            : 38%;
+    left           : -12%;
+    z-index        : 3;
+    background-size: contain;
+    opacity        : 0.5;
+}
+
+.splashTemplate .revolvingRight {
+    width          : 40vh;
+    height         : 40vh;
+    background     : url(../images/FM_seal_icon_copy.png);
+    position       : absolute;
+    top            : 38%;
+    left           : 85%;
+    background-size: contain;
+    z-index        : 3;
+    opacity        : 0.5;
+}
+
+.einstein {
+    width          : 50vh;
+    height         : 50vh;
+    background     : url(../images/einstein_head.png);
+    background-size: cover;
+    position       : absolute;
+    top            : 22%;
+    left           : 33%;
+    z-index        : 10;
+}
+
+.animateEinstein {
+    animation-name           : rotateEinstein;
+    animation-duration       : 30s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+}
+
+.animateCircle {
+    animation-name           : rotateEinstein;
+    animation-duration       : 40s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+}
+
+.bounceLogo {
+    animation-name           : bounce;
+    animation-duration       : .9s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.53, 1, 0.10, .5);
+
+}
+
+
+@keyframes rotateEinstein {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+
+/*teamSelectionTemplate*/
+.selectTeamCountTemplate .teamButtons {
+    width          : 100%;
+    height         : 8vh;
+    display        : flex;
+    display        : -ms-flexbox;
+    justify-content: space-around;
+    align-self     : center;
+    position       : absolute;
+    top            : 54%;
+}
+
+.selectTeamCountTemplate #button_hover_bottom01,
+.selectTeamCountTemplate #button_hover_bottom02,
+.selectTeamCountTemplate #button_hover_bottom03,
+.selectTeamCountTemplate #button_hover_bottom04 {
+    width            : 21%;
+    height           : 470px;
+    background       : url(../images/numberone_icon.png);
+    position         : absolute;
+    top              : 100%;
+    background-size  : contain;
+    background-repeat: no-repeat;
+    z-index          : 100;
+}
+
+.selectTeamCountTemplate #button_hover_bottom01 {
+    left: 2%;
+}
+
+.selectTeamCountTemplate #button_hover_bottom02 {
+    left: 27.5%;
+}
+
+.selectTeamCountTemplate #button_hover_bottom03 {
+    left: 52.5%;
+}
+
+.selectTeamCountTemplate #button_hover_bottom04 {
+    left: 77.5%;
+}
+
+.animateLableTeamSelection {
+    animation          : LabelanimateTeamSelection;
+    animation-duration : .76s;
+    animation-fill-mode: both;
+}
+
+@keyframes LabelanimateTeamSelection {
+    0% {
+        left: -81%;
+    }
+
+    100% {
+        left: -6%
+    }
+}
+
+.animateLableRoundSelection {
+    animation          : LabelanimateRoundSelection;
+    animation-duration : .7s;
+    animation-fill-mode: both;
+}
+
+@keyframes LabelanimateRoundSelection {
+    0% {
+        right: -81%
+    }
+
+    100% {
+        right: 0%
+    }
+}
+
+.animateHoverUpTeamSelection {
+    animation          : hoverUpTeamSelection;
+    animation-duration : 0.1s;
+    animation-fill-mode: both;
+}
+
+.animateHoverDownTeamSelection {
+    animation          : hoverDownTeamSelection;
+    animation-duration : 0.1s;
+    animation-fill-mode: both;
+}
+
+@keyframes hoverUpTeamSelection {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: 63%;
+    }
+}
+
+@keyframes hoverDownTeamSelection {
+    0% {
+        top: 63%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+/*roundSelectionTemplate*/
+.roundSelectTemplate #button_round_hover_bottom01,
+.roundSelectTemplate #button_round_hover_bottom02,
+.roundSelectTemplate #button_round_hover_bottom03,
+.roundSelectTemplate #button_round_hover_bottom04,
+.roundSelectTemplate #button_round_hover_bottom05,
+.roundSelectTemplate #button_round_hover_bottom06,
+.roundSelectTemplate #button_round_hover_bottom07 {
+    width            : 21%;
+    height           : 320px;
+    background       : url(../images/numberone_icon_reverse.png);
+    position         : relative;
+    top              : -43vh;
+    background-size  : contain;
+    background-repeat: no-repeat;
+    z-index          : 1;
+}
+
+.animateHoverUpRoundSelection {
+    animation          : hoverUpRoundSelection;
+    animation-duration : 0.1s;
+    animation-fill-mode: both;
+}
+
+.animateHoverDownRoundSelection {
+    animation          : hoverDownRoundSelection;
+    animation-duration : 0.1s;
+    animation-fill-mode: both;
+}
+
+@keyframes hoverUpRoundSelection {
+    0% {
+        top: -43vh;
+    }
+
+    100% {
+        top: -21vh;
+    }
+}
+
+@keyframes hoverDownRoundSelection {
+    0% {
+        top: -21vh;
+    }
+
+    100% {
+        top: -43vh
+    }
+}
+
+
+.roundSelectTemplate .teamButtons {
+    width             : 100%;
+    height            : 10%;
+    display           : flex;
+    display           : -ms-flexbox;
+    justify-content   : space-around;
+    align-self        : center;
+    position          : relative;
+    top               : 21%;
+    /* margin         : 0 auto; */
+    align-items       : center;
+}
+
+/*verifySelectionTemplate*/
+.animateVerifyTitle {
+    animation          : animateText;
+    animation-duration : 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes animateText {
+    0% {
+        font-size: 0vh;
+    }
+
+    100% {
+        font-size: 13vh;
+    }
+}
+
+.verifySelectionTemplate #button_hover_bottom01,
+.verifySelectionTemplate #button_hover_bottom02 {
+    width            : 21%;
+    height           : 470px;
+    background       : url(../images/numberone_icon.png);
+    position         : absolute;
+    top              : 100%;
+    background-size  : contain;
+    background-repeat: no-repeat;
+    z-index          : 100;
+}
+
+.verifySelectionTemplate #button_hover_bottom01 {
+    left: 24%;
+}
+
+.verifySelectionTemplate #button_hover_bottom02 {
+    left: 56%;
+}
+
+.animateHoverUpVerify {
+    animation          : hoverUpVerify;
+    animation-duration : 0.1s;
+    animation-fill-mode: both;
+}
+
+.animateHoverDownVerify {
+    animation          : hoverDownVerify;
+    animation-duration : 0.1s;
+    animation-fill-mode: both;
+}
+
+@keyframes hoverUpVerify {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: 82%;
+    }
+}
+
+@keyframes hoverDownVerify {
+    0% {
+        top: 82%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+
+.verifySelectionTemplate .teamButtons {
+    width          : 90vh;
+    height         : 7vh;
+    display        : flex;
+    display        : -ms-flexbox;
+    justify-content: space-around;
+    align-self     : center;
+    position       : absolute;
+    top            : 73%;
+    left           : 19%;
+}
+
+.selectionText {
+    position : absolute;
+    top      : 31%;
+    font-size: 6vh;
+    width    : 145vh;
+    height   : 10vh;
+}
+
+.selectionText .Yselect {
+    position : absolute;
+    top      : -28%;
+    left     : 16%;
+    font-size: 5vh;
+}
+
+.selectionText .TeamselectCount {
+    position : absolute;
+    top      : -15%;
+    left     : 34%;
+    font-size: 5vh;
+}
+
+.selectionText .playingF {
+    position : absolute;
+    top      : -28%;
+    left     : 49%;
+    font-size: 5vh
+}
+
+.selectionText .TeamSelected {
+    position : absolute;
+    top      : -15%;
+    left     : 67%;
+    font-size: 5vh;
+}
+
+/*introVideoTemplate*/
+
+.introVideoTemplate #button_intro_hover_bottom01 {
+    width            : 21%;
+    height           : 470px;
+    background       : url(../images/numberone_icon.png);
+    position         : absolute;
+    top              : 100%;
+    background-size  : contain;
+    background-repeat: no-repeat;
+    z-index          : 100;
+}
+
+.introVideoTemplate #button_intro_hover_bottom01 {
+    right: 1%;
+}
+
+
+.animateHoverUpIntro {
+    animation          : hoverUpIntro;
+    animation-duration : 0.1s;
+    animation-fill-mode: both;
+}
+
+.animateHoverDownIntro {
+    animation          : hoverDownIntro;
+    animation-duration : 0.1s;
+    animation-fill-mode: both;
+}
+
+@keyframes hoverUpIntro {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: 94%;
+    }
+}
+
+@keyframes hoverDownIntro {
+    0% {
+        top: 94%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+
+.introVideoTemplate .vidContaier {
+    width   : 100%;
+    height  : 100%;
+    overflow: hidden;
+    position: relative;
+    z-index : 2;
+}
+
+.introVideoTemplate .vidContaier video {
+    min-width : 100%;
+    min-height: 100%;
+}
+
+.introVideoTemplate .playBtn {
+    background    : darkgoldenrod;
+    width         : 100px;
+    height        : 100px;
+    display       : inline-block;
+    border-radius : 100px;
+    text-align    : center;
+    line-height   : 102px;
+    box-shadow    : 0px 0px 16px #fff;
+    position      : absolute;
+    top           : 50%;
+    left          : 50%;
+    transform     : translate(-50%, -50%);
+    color         : #fff;
+    font-size     : 25px;
+    letter-spacing: .5px;
+    text-shadow   : 1px 1px 1px #000;
+    cursor        : pointer;
+}
+
+.introVideoTemplate .playBtn:hover {
+    color         : #000;
+    font-size     : 25px;
+    letter-spacing: .5px;
+    text-shadow   : 1px 1px 1px #fff;
+}
+
+#skipBtn {
+    position: absolute;
+    top     : 85%;
+    left    : 80%;
+    z-index : 2;
+}
+
+
+/*stealVideoTemplate*/
+.stealVideoTemplate .vidContaier {
+    width   : 100%;
+    height  : 100%;
+    overflow: hidden;
+    position: relative;
+    z-index : 2;
+}
+
+.stealVideoTemplate .vidContaier video {
+    width: 100%;
+}
+
+.stealVideoTemplate .playBtn {
+    background    : darkgoldenrod;
+    width         : 100px;
+    height        : 100px;
+    display       : inline-block;
+    border-radius : 100px;
+    text-align    : center;
+    line-height   : 102px;
+    box-shadow    : 0px 0px 16px #fff;
+    position      : absolute;
+    top           : 50%;
+    left          : 50%;
+    transform     : translate(-50%, -50%);
+    color         : #fff;
+    font-size     : 25px;
+    letter-spacing: .5px;
+    text-shadow   : 1px 1px 1px #000;
+    cursor        : pointer;
+}
+
+.stealVideoTemplate .playBtn:hover {
+    color         : #000;
+    font-size     : 25px;
+    letter-spacing: .5px;
+    text-shadow   : 1px 1px 1px #fff;
+}
+
+/*teamRandomizerTemplate*/
+.animateLeftBanner {
+    animation                : leftBannerEntry;
+    animation-duration       : .15s;
+    animation-timing-function: linear;
+    animation-fill-mode      : both;
+}
+
+.animateRightBanner {
+    animation                : rightBannerEntry;
+    animation-duration       : .15s;
+    animation-timing-function: linear;
+    animation-fill-mode      : both;
+}
+
+@keyframes leftBannerEntry {
+    0% {
+        left: -125%;
+    }
+
+    100% {
+        left: -19%;
+    }
+}
+
+@keyframes rightBannerEntry {
+    0% {
+        left: 115%;
+    }
+
+    100% {
+        left: 3%;
+    }
+}
+
+.teamRandomizerTemplate #randomTeamName {
+    font-size: 14vh;
+    color    : #fff;
+    height   : auto;
+    position : relative;
+    top      : 50%;
+    width    : 22%;
+    left     : -12%;
+}
+
+.teamRandomizerTemplate #randomTeamNameStatic {
+    font-size: 14vh;
+    color    : #fff;
+    height   : auto;
+    position : relative;
+    top      : 50%;
+    width    : 22%;
+    left     : 49%;
+}
+
+.teamEntryAnim {
+    animation          : teamNameEntry;
+    animation-duration : .2s;
+    animation-fill-mode: both;
+}
+
+@keyframes teamNameEntry {
+    0% {
+        left: -12%;
+    }
+
+    100% {
+        left: 48%;
+    }
+}
+
+
+
+.teamRandomizerTemplate #turnLabel {
+    font-size: 14vh;
+    color    : #fff;
+    height   : auto;
+    position : relative;
+    top      : 24%;
+    width    : 30%;
+    left     : 90%;
+}
+
+.teamLabelEntryAnim {
+    animation          : teamLabelEntry;
+    animation-duration : .2s;
+    animation-fill-mode: both;
+}
+
+@keyframes teamLabelEntry {
+    0% {
+        left: 90%;
+    }
+
+    100% {
+        left: 16%;
+    }
+}
+
+
+
+.teamRandomizerTemplate #RightArrow {
+    /* background       : url(../images/numberone_icon_right.png); */
+    width               : 55vh;
+    height              : 69vh;
+    position            : absolute;
+    /* background-size  : contain; */
+    background-repeat   : no-repeat;
+    left                : 112%;
+    top                 : -0.5%;
+}
+
+.animateRightArrow {
+    animation          : animateArrowRight;
+    animation-duration : .2s;
+    animation-fill-mode: both;
+}
+
+@keyframes animateArrowRight {
+    0% {
+        left: 112%;
+    }
+
+    100% {
+        left: 70%
+    }
+}
+
+.teamRandomizerTemplate #LeftArrow {
+    /* background       : url(../images/numberone_icon.png); */
+    width               : 37vh;
+    height              : 51vh;
+    position            : absolute;
+    /* background-size  : contain; */
+    background-repeat   : no-repeat;
+    transform           : rotate(90deg);
+    left                : -31%;
+    top                 : 70%;
+}
+
+.animateLeftArrow {
+    animation          : animateArrowLeft;
+    animation-duration : .2s;
+    animation-fill-mode: both;
+}
+
+@keyframes animateArrowLeft {
+    0% {
+        left: -31%;
+    }
+
+    100% {
+        left: -2%
+    }
+}
+
+/*Static randomizer*/
+.teamRandomizerTemplate #turnLabelStatic {
+    font-size: 14vh;
+    color    : #fff;
+    height   : auto;
+    position : relative;
+    top      : 24%;
+    width    : 30%;
+    left     : 11%;
+
+}
+
+.teamRandomizerTemplate #RightArrowStatic {
+    /* background       : url(../images/numberone_icon_right.png); */
+    width               : 55vh;
+    height              : 69vh;
+    position            : absolute;
+    /* background-size  : contain; */
+    background-repeat   : no-repeat;
+    left                : 69%;
+    top                 : -0.5%;
+}
+
+.teamRandomizerTemplate #LeftArrowStatic {
+    /* background       : url(../images/numberone_icon.png); */
+    width               : 37vh;
+    height              : 51vh;
+    position            : absolute;
+    /* background-size  : contain; */
+    background-repeat   : no-repeat;
+    transform           : rotate(90deg);
+    left                : 0%;
+    top                 : 70%;
+}
+
+.teamRandomizerTemplate #leftBannerStatic {
+    height           : 39%;
+    width            : 115%;
+    background       : url(../images/Banner_Left.png);
+    background-size  : contain;
+    position         : absolute;
+    top              : -5%;
+    left             : -20%;
+    background-repeat: no-repeat;
+}
+
+.teamRandomizerTemplate #rightBannerStatic {
+    height           : 72vh;
+    width            : 153%;
+    background       : url(../images/Banner_Right.png);
+    background-size  : contain;
+    position         : absolute;
+    top              : 67%;
+    left             : 5%;
+    background-repeat: no-repeat;
+}
+
+/**/
+.teamRandomizerTemplate #leftBanner {
+    height           : 39%;
+    width            : 115%;
+    background       : url(../images/Banner_Left.png);
+    background-size  : contain;
+    position         : absolute;
+    top              : -5%;
+    left             : -125%;
+    background-repeat: no-repeat;
+}
+
+.teamRandomizerTemplate #rightBanner {
+    height           : 72vh;
+    width            : 153%;
+    background       : url(../images/Banner_Right.png);
+    background-size  : contain;
+    position         : absolute;
+    top              : 67%;
+    left             : 105%;
+    background-repeat: no-repeat;
+}
+
+.teamRandomizerTemplate .teamButtons .badge {
+    width : 18vh;
+    height: 28vh;
+}
+
+.teamRandomizerTemplate .badgeRunner {
+    width   : 18vh;
+    height  : 28vh;
+    position: absolute;
+    top     : 40%;
+    z-index : 1;
+}
+
+.teamRandomizerTemplate .teamButtons .badge .team-name {
+    position      : relative;
+    top           : 10.4%;
+    left          : 19%;
+    font-size     : 3.7vh;
+    color         : #878981;
+    letter-spacing: 1px;
+    z-index       : 3;
+}
+
+
+.teamRandomizerTemplate .teamButtons .badge .team-score {
+    position      : relative;
+    z-index       : 2;
+    top           : 41%;
+    left          : -24%;
+    font-size     : 3.7vh;
+    color         : #878981;
+    letter-spacing: 1px;
+}
+
+
+.teamRandomizerTemplate .teamButtons .badge .steal_btn {
+    position   : relative;
+    top        : 71%;
+    right      : 5%;
+    width      : 20vh;
+    line-height: 7vh;
+}
+
+.teamRandomizerTemplate .play_it_safe_btn {
+    position: relative;
+    left    : 61%;
+    top     : 64%;
+}
+
+
+.teamRandomizerTemplate .teamButtons {
+    width          : 80%;
+    height         : 23vh;
+    display        : flex;
+    display        : -ms-flexbox;
+    justify-content: space-around;
+    align-self     : center;
+    position       : relative;
+    top            : 40%;
+    margin         : 0 auto;
+}
+
+/*static template randomizer*/
+.staticRandomizer .teamButtons .badge .badge0.team-name,
+.staticRandomizer .teamButtons .badge .badge1.team-name,
+.staticRandomizer .teamButtons .badge .badge2.team-name,
+.staticRandomizer .teamButtons .badge .badge3.team-name,
+.staticRandomizer .teamButtons .badge .badge4.team-name {
+    position         : absolute;
+    /* top           : 12.4%;
+    left             : 27.5%; */
+    font-size        : 3.7vh;
+    color            : #878981;
+    letter-spacing   : 1px;
+}
+
+.staticRandomizer .teamButtons .badge .badge0.team-score,
+.staticRandomizer .teamButtons .badge .badge1.team-score,
+.staticRandomizer .teamButtons .badge .badge2.team-score,
+.staticRandomizer .teamButtons .badge .badge3.team-score,
+.staticRandomizer .teamButtons .badge .badge4.team-score {
+    position         : absolute;
+    z-index          : 2;
+    /* top           : 50%;
+    left             : 28.4%; */
+    font-size        : 3.7vh;
+    color            : #878981;
+    letter-spacing   : 1px;
+}
+
+/* .staticRandomizer .teamButtons .badge .badge1.team-name {
+
+    font-size     : 3.7vh;
+    color         : #878981;
+    letter-spacing: 1px;
+}
+
+.staticRandomizer .teamButtons .badge .badge1.team-score {
+    position      : absolute;
+    z-index       : 2;
+
+    font-size     : 3.7vh;
+    color         : #878981;
+    letter-spacing: 1px;
+} */
+
+/* #gameContainer > div > div.teamButtons > div:nth-child(3) > span.badge0.team-name */
+/* .staticRandomizer .teamButtons .badge .team-name {
+    position      : relative;
+    top           : 10.4%;
+    left          : 19%;
+    font-size     : 3.7vh;
+    color         : #878981;
+    letter-spacing: 1px;
+}
+
+.staticRandomizer .teamButtons .badge .team-score {
+    position      : relative;
+    z-index       : 2;
+    top           : 8vh;
+    left          : -24%;
+    font-size     : 3.7vh;
+    color         : #878981;
+    letter-spacing: 1px;
+} */
+
+/*topicSelectionTemplate*/
+.topicSelectionTemplate .logoSelectTopic {
+    position           : absolute;
+    top                : 7%;
+    left               : 36%;
+    width              : 40vh;
+    height             : 44vh;
+    background         : url(../images/FM_empty_frame_MC.png);
+    background-size    : contain;
+    background-repeat  : no-repeat;
+    background-position: 0px 0px;
+    opacity            : 0.8;
+}
+
+.topicSelectionTemplate .topLogo {
+    background       : url(../images/numberone_icon.png);
+    width            : 28vh;
+    height           : 39vh;
+    background-size  : contain;
+    background-repeat: no-repeat;
+    position         : absolute;
+    top              : -25%;
+    left             : 38%;
+    transform        : rotate(180deg);
+}
+
+.topicSelectionTemplate .animatedTeam {
+    position : relative;
+    top      : 20%;
+    left     : 21.5%;
+    font-size: 9.3vh;
+    width    : 21vh;
+}
+
+.topicSelectionTemplate .animationContainer {
+    position: absolute;
+    top     : 10%;
+    left    : 37%;
+    width   : 37vh;
+    height  : 28vh;
+}
+
+.topicSelectionTemplate .selectionBanner {
+    height           : 5vh;
+    width            : 61%;
+    background-color : #9B9E95;
+    -webkit-transform: perspective(80vh) rotateY(-13deg);
+    transform        : perspective(12vh) rotateY(-13deg);
+    position         : relative;
+    top              : 5vh;
+    left             : 5vh;
+}
+
+.topicSelectionTemplate .textOverlay {
+    position : absolute;
+    top      : 53%;
+    left     : 31%;
+    font-size: 3.5vh;
+    color    : #fff;
+}
+
+.topicSelectionTemplate .selectionBannerText {
+    background         : url(../images/banner.svg);
+    width              : 32vh;
+    height             : 7vh;
+    background-position: 0 -50px;
+    position           : absolute;
+    top                : 66px;
+    line-height        : 67px;
+    background-repeat  : no-repeat;
+    left               : -47px;
+    font-size          : 3.6vh;
+    color              : #fff;
+}
+
+.topicSelectionTemplate .circle {
+    background       : url(../images/FM_circle_leaf_icon.png);
+    width            : 39vh;
+    height           : 39vh;
+    background-size  : contain;
+    background-repeat: no-repeat;
+    position         : absolute;
+    top              : 7%;
+    left             : 38.5%;
+}
+
+.topicSelectionTemplate .topicContainer {
+    position: absolute;
+    top     : 8%;
+    left    : 6.6%;
+    width   : 120vh;
+    height  : 76vh;
+    margin  : 0 auto;
+}
+
+.topicSelectionTemplate .topic {
+    position         : absolute;
+    width            : 32vh;
+    height           : 25vh;
+    background       : gold;
+    background       : url(../images/FM_title_placeholder.png);
+    background-size  : contain;
+    background-repeat: no-repeat;
+    cursor           : pointer;
+}
+
+.topicSelectionTemplate .topic * {
+    position      : absolute;
+    top           : 25%;
+    left          : 20%;
+    color         : #fff;
+    font-weight   : bold;
+    width         : 18vh;
+    text-align    : center;
+    font-size     : 2.7vh;
+    /* transition : 1s; */
+}
+
+.topicSelectionTemplate .teamButtons .badge {
+
+    width : 18vh;
+    height: 28vh;
+
+}
+
+
+.topicSelectionTemplate .badgeRunner {
+    width   : 18vh;
+    height  : 28vh;
+    position: absolute;
+    top     : 84%;
+    z-index : 1;
+
+}
+
+
+.topicSelectionTemplate .teamButtons .badge .team-name {
+    position      : relative;
+    top           : 10.4%;
+    left          : 19%;
+    font-size     : 3.7vh;
+    color         : #878981;
+    letter-spacing: 1px;
+    z-index       : 3;
+}
+
+
+.topicSelectionTemplate .teamButtons .badge .team-score {
+    position      : relative;
+    z-index       : 2;
+    top           : 41%;
+    left          : -24%;
+    font-size     : 3.7vh;
+    color         : #878981;
+    letter-spacing: 1px;
+}
+
+.topicSelectionTemplate .teamButtons {
+    width          : 80%;
+    height         : 23vh;
+    display        : flex;
+    display        : -ms-flexbox;
+    justify-content: space-around;
+    align-self     : center;
+    position       : relative;
+    top            : 84%;
+    margin         : 0 auto;
+}
+
+.animateBoxIn {
+    animation                : animateBoxIn;
+    animation-duration       : .2s;
+    animation-fill-mode      : both;
+    animation-timing-function: linear;
+}
+
+.animateBoxOut {
+    animation                : animateBoxOut;
+    animation-duration       : .2s;
+    animation-fill-mode      : both;
+    animation-timing-function: linear;
+}
+
+@keyframes animateBoxIn {
+    0% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    75% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1.3);
+    }
+}
+
+@keyframes animateBoxOut {
+    0% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*-----------Scaling Topic0-------------*/
+/* @keyframes scaleTopic0 {
+    0% {
+        top : 0%;
+        left: 0%;
+    }
+
+    100% {
+        top      : 80%;
+        left     : 53%;
+        transform: translate(-50%, -50%) scale(5);
+    }
+} */
+
+.scaleTopic010 {
+    animation-name           : scaleTopic01;
+    animation-duration       : .5s;
+    animation-fill-mode      : both;
+    animation-timing-function: linear;
+    z-index                  : 1;
+}
+
+@keyframes scaleTopic01 {
+    0% {
+        top : 0%;
+        left: 0%;
+    }
+
+    100% {
+        top      : 50%;
+        left     : 53%;
+        transform: translate(-50%, -50%) scale(5);
+    }
+}
+
+
+
+.scaleTopic020 {
+    animation-name           : scaleTopic02;
+    animation-duration       : .5s;
+    animation-fill-mode      : both;
+    animation-timing-function: linear;
+    z-index                  : 1;
+}
+
+@keyframes scaleTopic02 {
+    0% {
+        top : 40%;
+        left: 0%;
+    }
+
+    100% {
+        top      : 50%;
+        left     : 53%;
+        transform: translate(-50%, -50%) scale(5);
+    }
+}
+
+
+
+.scaleTopic030 {
+    animation-name           : scaleTopic03;
+    animation-duration       : .5s;
+    animation-fill-mode      : both;
+    animation-timing-function: linear;
+    z-index                  : 1;
+}
+
+@keyframes scaleTopic03 {
+    0% {
+        top : 40%;
+        left: 73%;
+    }
+
+    100% {
+        top      : 50%;
+        left     : 53%;
+        transform: translate(-50%, -50%) scale(5);
+    }
+}
+
+.scaleTopic040 {
+    animation-name           : scaleTopic04;
+    animation-duration       : .5s;
+    animation-fill-mode      : both;
+    animation-timing-function: linear;
+    z-index                  : 1;
+}
+
+@keyframes scaleTopic04 {
+    0% {
+        top : 0px;
+        left: 73%;
+    }
+
+    100% {
+        top      : 50%;
+        left     : 53%;
+        transform: translate(-50%, -50%) scale(5);
+    }
+}
+
+
+.scaleTopic050 {
+    animation-name           : scaleTopic05;
+    animation-duration       : .5s;
+    animation-fill-mode      : both;
+    animation-timing-function: linear;
+    z-index                  : 1;
+}
+
+@keyframes scaleTopic05 {
+    0% {
+        top : 55%;
+        left: 40%;
+    }
+
+    100% {
+        top      : 50%;
+        left     : 53%;
+        transform: translate(-50%, -50%) scale(5);
+    }
+}
+
+/*------------------------------------------------------------------*/
+.topicSelectionTemplate .topic02 {
+    top: 40%;
+}
+
+.topicSelectionTemplate .topic03 {
+    top : 40%;
+    left: 73%;
+}
+
+.topicSelectionTemplate .topic04 {
+    left: 73%;
+    top : 0px;
+}
+
+.topicSelectionTemplate .topic05 {
+    left: 40%;
+    top : 55%;
+}
+
+.topicSelectionTemplate .topic01:hover,
+.topicSelectionTemplate .topic02:hover,
+.topicSelectionTemplate .topic03:hover,
+.topicSelectionTemplate .topic04:hover,
+.topicSelectionTemplate .topic05:hover {
+    background       : url(../images/framehit.png);
+    background-size  : contain;
+    background-repeat: no-repeat;
+}
+
+html body div#GameWindow.stageShadow div#stage div#gameContainer div#questionContainerOverlay div.questionTemplate div.teamButtons {
+    top: 82% !important;
+}
+
+/*Top Bar Template*/
+
+.topBarTemplate {
+    display        : flex;
+    justify-content: center;
+    width          : 100%;
+    height         : 100%;
+}
+
+.topBarTemplate .buttonsArea {
+    width  : 100%;
+    display: inline-block;
+}
+
+.topBarTemplate .buttonsArea .rightColumn {
+    float   : right;
+    width   : 25vh;
+    position: relative;
+    top     : 11px;
+}
+
+.topBarTemplate .buttonsArea .leftColumn {
+    width   : 100px;
+    position: relative;
+    top     : 10px;
+    left    : 26px;
+}
+
+.topBarTemplate .buttonsArea .leftColumn .clock {
+    width          : 13vh;
+    height         : 6vh;
+    background     : url(../images/timer_bg.png);
+    background-size: auto;
+    background-size: cover;
+    position       : absolute;
+    top            : 1px;
+    text-align     : center;
+    color          : #DFD9CD;
+    font-size      : 2.2vh;
+    line-height    : 6vh;
+    cursor         : pointer;
+}
+
+.topBarTemplate .buttonsArea .leftColumn .clock .digitalClock {
+    position: relative;
+    top     : -14%;
+}
+
+.topBarTemplate .buttonsArea .leftColumn .clock .hms {
+    position      : absolute;
+    font-size     : 1vh;
+    top           : 17%;
+    left          : 17%;
+    letter-spacing: 2px;
+}
+
+.topBarTemplate .buttonsArea .rightColumn .HelpBtn {
+    width            : 9vh;
+    background       : url(../images/help_exit_bg.png);
+    height           : 6vh;
+    background-size  : contain;
+    background-repeat: no-repeat;
+    color            : #fff;
+    font-size        : 3vh;
+    line-height      : 6vh;
+    cursor           : pointer;
+    float            : left;
+    margin-right     : 0px;
+}
+
+
+.topBarTemplate .buttonsArea .rightColumn .ExitBtn {
+    width            : 9vh;
+    text-align       : center;
+    background       : url(../images/help_exit_bg.png);
+    height           : 6vh;
+    background-size  : contain;
+    background-repeat: no-repeat;
+    color            : #fff;
+    font-size        : 3vh;
+    line-height      : 6vh;
+    cursor           : pointer;
+    float            : right;
+    margin-right     : 30px;
+}
+
+.topBarTemplate .buttonsArea .leftColumn .clock:hover,
+.topBarTemplate .buttonsArea .rightColumn .HelpBtn:hover,
+.topBarTemplate .buttonsArea .rightColumn .ExitBtn:hover {
+    text-shadow: 3px 3px 3px rgba(24, 24, 24, 0.75);
+}
+
+
+/*utility classes*/
+.dollarAnim {
+    font-size    : 5vh;
+    position     : absolute;
+    top          : -16%;
+    /* left      : 22.5%; */
+    width        : 10vh;
+    color        : #fff;
+    text-align   : center;
+    z-index      : 9999;
+    visibility   : hidden;
+}
+
+/* .dollarAnim0 {
+    top : -16%;
+    left: 26.5%;
+}
+
+.dollarAnim1 {
+    top : -16%;
+    left: 26.5%;
+}
+
+.dollarAnim2 {
+    top : -16%;
+    left: 26.5%;
+}
+
+.dollarAnim3 {
+    top : -16%;
+    left: 26.5%;
+}
+
+.dollarAnim4 {
+    top : -16%;
+    left: 26.5%;
+} */
+
+.anim_250 {
+    background: red;
+
+}
+
+.anim_500 {
+    background: green;
+}
+
+.anim_1000 {
+    background: yellow;
+}
+
+svg {
+    position: absolute;
+    top     : -80px;
+    left    : -110px;
+}
+
+ol {
+    margin      : 0px;
+    padding-left: 15px;
+}
+
+ol li {
+    margin     : 0px;
+    padding    : 0px;
+    text-indent: -1.5em;
+    margin-left: 1em;
+}
+
+ul {
+    margin      : 0;
+    padding-left: 30px;
+}
+
+ul li {
+    margin     : 0px;
+    padding    : 0px;
+    text-indent: 0.5em;
+    margin-left: -0.5em;
+}
+
+.gameEnd {
+    position       : relative;
+    z-index        : 9;
+    top            : -100%;
+    display        : flex;
+    display        : -ms-flexbox;
+    justify-content: center;
+    align-items    : center;
+    height         : 100vh;
+    width          : 100%;
+    display        : none;
+}
+
+.gameEnd .title {
+    position : relative;
+    top      : 30%;
+    font-size: 15vh;
+}
+
+/* .stage .bottombar {
+    position  : absolute;
+    bottom    : 0px;
+    left      : 0px;
+    width     : 100%;
+    height    : 180px;
+    background: #fff;
+} */

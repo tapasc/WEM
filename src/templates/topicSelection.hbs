@@ -1,0 +1,30 @@
+<div class="topicSelectionTemplate">
+    <div>
+        <div class="logoSelectTopic"></div>
+        <div class="circle"></div>
+        <div class="topLogo"></div>
+        <div class="animationContainer bounceLogo">
+            <div class="templateFont animatedTeam"></div>
+            <div class="templateFont selectionBanner"></div>
+            <div class="textOverlay templateFont">Select a Topic</div>
+        </div>
+    </div>
+
+    <div class="topicContainer">
+        <div class="topic topic01" id="topic010"></div>
+        <div class="topic topic02" id="topic020"></div>
+        <div class="topic topic03" id="topic030"></div>
+        <div class="topic topic04" id="topic040"></div>
+        <div class="topic topic05" id="topic050"></div>
+    </div>
+    <div class="badgeRunner"></div>
+    <div class="teamButtons">
+        {{#each teamsList}}
+        <div class="badge templateFont">
+            {{!-- <div data-helper-consumer="score">Tapas</div> --}}
+            <span class="badge{{this.id}} team-name">{{this.name}}</span>
+            <span class="badge{{this.id}} team-score">{{this.score}}</span>
+        </div>
+        {{/each}}
+    </div>
+</div>

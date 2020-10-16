@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="250" height="130" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <path id="svg_2" d="m104.5,160.45313" opacity="0.5" fill-opacity="null" stroke-opacity="null"
+            stroke-width="1.5" stroke="#000" fill="#fff" />
+        <path stroke="#000" transform="rotate(-92.16581726074219 156.04942321777344,82.15797424316408) "
+            id="svg_4"
+            d="m128.04478,209.7014l10.50174,-255.08684l35.00581,0l10.50174,255.08684l-56.00928,0z"
+            stroke-opacity="null" stroke-width="0" fill="#9b9e95" />
+    </g>
+</svg>

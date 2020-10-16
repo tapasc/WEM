@@ -1,0 +1,22 @@
+<div class="teamRandomizerTemplate staticRandomizer">
+    <div id="leftBannerStatic">
+        <div id="randomTeamNameStatic" class="templateFont">TEAM 1</div>
+    </div>
+    <div id="RightArrowStatic"></div>
+<div class="badgeRunner"></div>    
+    <div class="teamButtons">
+        {{#each teamsList}}
+        <div class="badge templateFont">
+             <div class="dollarAnim dollarAnim{{this.id}}">$1000</div>
+            <span class="badge{{this.id}} team-name">{{this.name}}</span>
+            <span class="badge{{this.id}} team-score">{{this.score}}</span>
+            <div class="btn steal_btn{{this.id}} steal_btn">STEAL!</div>
+        </div>
+        {{/each}}
+    </div>
+    <div id="rightBannerStatic">
+        <div id="turnLabelStatic" class="templateFont">STEAL OR!</div>
+    </div>
+    <div id="LeftArrowStatic"></div>
+    <div class="btn play_it_safe_btn">PLAY IT SAFE</div>
+</div>

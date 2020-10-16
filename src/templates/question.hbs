@@ -1,0 +1,41 @@
+<div class="questionTemplate">
+    <div class="questionContainer">
+        <div class="banner templateFont">Team {{TeamsUp}} is up</div>
+        <div id="timer" class="templateFont">00:00</div>
+        <div id="timer_btn" class="templateFont"><span id="timer_icon" class="pause"></span></div>
+        <div class="questionDisplay">
+            <div class="question">{{Question.questionText}}</div>
+            <div class="questionDescription templateDisplayNone">
+                <ul>
+                    {{#each Question.optionsList}}
+                    <li><span>{{{this}}}</span></li>
+                    {{/each}}
+                </ul>
+                {{!-- <div>{{Question.answerText}}</div> --}}
+            </div>
+        </div>
+        <div id="ShowBtn" class="btn templateFont">SHOW</div>
+        <div class="btnBar">
+            <div id="CorrectBtn" class="btn templateFont">CORRECT</div>
+            <div id="IncorrectBtn" class="btn templateFont">INCORRECT</div>
+        </div>
+    </div>
+    <div class="scoreboard">
+        {{!-- <div>Scoring Animation Plays here...</div> --}}
+        <div class="feedback">
+            <div id="tName" class="templateFont"></div>
+            <div id="tScore" class="templateFont"></div>
+        </div>
+    </div>
+    <div class="badgeRunner"></div>
+    <div class="teamButtons">
+        {{#each teamsList}}
+        <div class="badge templateFont">
+            {{!-- <div data-helper-consumer="score">Tapas</div> --}}
+            <span class="badge{{this.id}} team-name">{{this.name}}</span>
+            <span class="badge{{this.id}} team-score">{{this.score}}</span>
+        </div>
+        {{/each}}
+    </div>
+
+</div>

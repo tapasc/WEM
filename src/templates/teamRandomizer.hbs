@@ -1,0 +1,19 @@
+<div class="teamRandomizerTemplate">
+    <div id="leftBanner">
+        <div id="randomTeamName" class="templateFont">TEAM 1</div>
+    </div>
+    <div id="RightArrow"></div>
+    <div class="badgeRunner"></div>
+    <div class="teamButtons">
+        {{#each teamsList}}
+        <div class="badge templateFont">
+            <span class="badge{{this.id}} team-name">{{this.name}}</span>
+            <span class="badge{{this.id}} team-score">{{this.score}}</span>
+        </div>
+        {{/each}}
+    </div>
+    <div id="rightBanner">
+        <div id="turnLabel" class="templateFont">YOU'RE UP!</div>
+    </div>
+    <div id="LeftArrow"></div>
+</div>
